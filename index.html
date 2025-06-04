@@ -5,19 +5,19 @@
     <style>
       body {
         margin: 0;
-        overflow: hidden; /* 防止滚动条 */
+        overflow: hidden;
         position: relative;
         height: 100vh;
         background: #f0f0f0;
       }
       #flying-text {
         position: absolute;
-        font-size: 24px;
+        font-size: 48px;
         font-weight: bold;
-        color: red;
         user-select: none;
         cursor: default;
         white-space: nowrap;
+        transform-origin: center center;
       }
     </style>
   </head>
@@ -34,6 +34,19 @@
       let dx = Math.random() < 0.5 ? -1 : 1;
       let dy = Math.random() < 0.5 ? -1 : 1;
 
+      let angle = 0;
+      let scaleDirection = 1;
+      let scale = 1;
+      const scaleSpeed = 0.01;
+      const maxScale = 2;
+      const minScale = 0.8;
+
+      // 自定义颜色列表
+      const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+      let colorIndex = 0;
+      let frameCount = 0;
+      const framesPerColor = 30; // 每30帧换一次颜色，大约半秒（60fps）
+
       function move() {
         x += dx * speed;
         y += dy * speed;
@@ -43,8 +56,23 @@
         if (y <= 0) dy = 1;
         if (y >= window.innerHeight - text.offsetHeight) dy = -1;
 
+        angle = (angle + 4) % 360;
+
+        scale += scaleDirection * scaleSpeed;
+        if (scale > maxScale || scale < minScale) {
+          scaleDirection *= -1;
+        }
+
+        frameCount++;
+        if (frameCount >= framesPerColor) {
+          frameCount = 0;
+          colorIndex = (colorIndex + 1) % colors.length;
+        }
+
         text.style.left = x + 'px';
         text.style.top = y + 'px';
+        text.style.transform = `rotate(${angle}deg) scale(${scale})`;
+        text.style.color = colors[colorIndex];
 
         requestAnimationFrame(move);
       }
