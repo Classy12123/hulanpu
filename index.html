@@ -1,88 +1,26 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello World</title>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        position: relative;
-        height: 100vh;
-        background: #f0f0f0;
-      }
-      #flying-text {
-        position: absolute;
-        font-size: 48px;
-        font-weight: bold;
-        user-select: none;
-        cursor: default;
-        white-space: nowrap;
-        transform-origin: center center;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>我的个人网站</h1>
-    <p id="flying-text">罗子轩是大傻逼</p>
-
-    <script>
-      const text = document.getElementById('flying-text');
-      const speed = 3;
-
-      let x = Math.random() * (window.innerWidth - text.offsetWidth);
-      let y = Math.random() * (window.innerHeight - text.offsetHeight);
-      let dx = Math.random() < 0.5 ? -1 : 1;
-      let dy = Math.random() < 0.5 ? -1 : 1;
-
-      let angle = 0;
-      let scaleDirection = 1;
-      let scale = 1;
-      const scaleSpeed = 0.01;
-      const maxScale = 2;
-      const minScale = 0.8;
-
-      // 自定义颜色列表
-      const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-      let colorIndex = 0;
-      let frameCount = 0;
-      const framesPerColor = 30; // 每30帧换一次颜色，大约半秒（60fps）
-
-      function move() {
-        x += dx * speed;
-        y += dy * speed;
-
-        if (x <= 0) dx = 1;
-        if (x >= window.innerWidth - text.offsetWidth) dx = -1;
-        if (y <= 0) dy = 1;
-        if (y >= window.innerHeight - text.offsetHeight) dy = -1;
-
-        angle = (angle + 4) % 360;
-
-        scale += scaleDirection * scaleSpeed;
-        if (scale > maxScale || scale < minScale) {
-          scaleDirection *= -1;
-        }
-
-        frameCount++;
-        if (frameCount >= framesPerColor) {
-          frameCount = 0;
-          colorIndex = (colorIndex + 1) % colors.length;
-        }
-
-        text.style.left = x + 'px';
-        text.style.top = y + 'px';
-        text.style.transform = `rotate(${angle}deg) scale(${scale})`;
-        text.style.color = colors[colorIndex];
-
-        requestAnimationFrame(move);
-      }
-
-      move();
-
-      window.addEventListener('resize', () => {
-        if (x > window.innerWidth - text.offsetWidth) x = window.innerWidth - text.offsetWidth;
-        if (y > window.innerHeight - text.offsetHeight) y = window.innerHeight - text.offsetHeight;
-      });
-    </script>
-  </body>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>欢迎光临</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      border: 10px solid green; /* 绿色边框 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>欢迎光临</h1>
+</body>
 </html>
