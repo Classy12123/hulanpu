@@ -8,38 +8,64 @@
             font-family: "微软雅黑", sans-serif;
             margin: 30px;
         }
+
         .news-container {
             max-width: 1000px;
             margin: auto;
             display: flex;
             gap: 20px;
         }
+
         .image-container {
-            flex: 1;
+            flex: 2;
         }
+
         .image-container img {
             width: 100%;
             height: auto;
         }
+
         .text-container {
             flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 右侧内容横向居中 */
+            text-align: center;   /* 文本居中 */
         }
+
         h2 {
             margin-top: 0;
+            font-size: 24px;
         }
+
         .meta {
             color: #666;
             margin: 10px 0 20px 0;
+            font-size: 14px;
         }
-        p {
-            text-align: justify;
+
+        .meta a {
+            color: #666;
+            text-decoration: none;
         }
-        hr {
-            margin: 20px 0;
+
+        .meta a:hover {
+            text-decoration: underline;
         }
+
         .source {
             font-weight: bold;
         }
+
+        p {
+            text-align: justify;
+        }
+
+        hr {
+            margin: 20px 0;
+            width: 100%;
+        }
+
         .footer {
             text-align: center;
             margin-top: 20px;
@@ -48,12 +74,18 @@
 </head>
 <body>
     <div class="news-container">
+        <!-- 左图 -->
         <div class="image-container">
             <img src="5g.png" alt="5G图片">
         </div>
+
+        <!-- 右文 -->
         <div class="text-container">
             <h2>5G将如何改变我们的生活？</h2>
-            <div class="meta"><em>2023年10月20日</em>　<span class="source">传感教育科技报道</span></div>
+			<hr>
+            <div class="meta">
+                <a href="#">2023年10月20日</a>　<span class="source">传感教育科技报道</span>
+            </div>
             <hr>
             <p>
                 如果你认为5G只是带来更快的视频下载和更流畅的上网体验，那就大错特错了。
@@ -66,8 +98,9 @@
             </p>
         </div>
     </div>
+
     <div class="footer">
-        <hr>
     </div>
 </body>
 </html>
+
